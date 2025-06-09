@@ -11,9 +11,14 @@
         <script>
             function requisitarPagina(url) {
                 let ajax = new XMLHttpRequest();
+                console.log(ajax.readyState);
                 ajax.open('GET', url);
+                console.log(ajax.readyState);
                 ajax.send();
-                console.log(ajax);
+                ajax.onreadystatechange = () => {
+                    console.log(ajax.readyState);
+                }
+                // console.log(ajax);
             } 
         </script>
 	
