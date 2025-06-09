@@ -10,22 +10,17 @@ function requisitarPagina(url) {
     }
     
     let ajax = new XMLHttpRequest();
-    // console.log(ajax.readyState);
     
     ajax.open('GET', url);
-    // console.log(ajax.readyState);
     
     ajax.onreadystatechange = () => {
         if (ajax.readyState == 4 && ajax.status == 200) {
-            document.getElementById('conteudo').innerHTML = `Requisição finalizada com sucesso! Status da requisição: ${ajax.status}`;
-            // document.getElementById('loading').remove();
+            document.getElementById('conteudo').innerHTML = ajax.responseText;
         }
 
         if (ajax.readyState == 4 && ajax.status == 404) {
-            document.getElementById('conteudo').innerHTML = `Requisição finalizada com erro! O recurso requisitado não foi encontrado! Status da requisição: ${ajax.status}`;
-            // document.getElementById('loading').remove();
+            document.getElementById('conteudo').innerHTML = `<br><br><div class="panel panel-default"><div class="panel-body"><p>Requisição finalizada com erro! O recurso requisitado não foi encontrado! Status da requisição: ${ajax.status}</p></div></div>`;
         }
     }
-    // console.log(ajax);
     ajax.send();
 } 
