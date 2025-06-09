@@ -1,4 +1,6 @@
 function requisitarPagina(url) {
+    document.getElementById('conteudo').innerHTML = '';
+    
     if (!document.getElementById('loading')) {
         let imgLoading = document.createElement('img');
         imgLoading.id = 'loading';
@@ -14,9 +16,14 @@ function requisitarPagina(url) {
     // console.log(ajax.readyState);
     
     ajax.onreadystatechange = () => {
-        if (ajax.readyState == 4) {
-            console.log('Requisição finalizada com sucesso!');
-            document.getElementById('loading').remove();
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            document.getElementById('conteudo').innerHTML = `Requisição finalizada com sucesso! Status da requisição: ${ajax.status}`;
+            // document.getElementById('loading').remove();
+        }
+
+        if (ajax.readyState == 4 && ajax.status == 404) {
+            document.getElementById('conteudo').innerHTML = `Requisição finalizada com erro! O recurso requisitado não foi encontrado! Status da requisição: ${ajax.status}`;
+            // document.getElementById('loading').remove();
         }
     }
     // console.log(ajax);
