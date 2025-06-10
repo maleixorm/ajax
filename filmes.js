@@ -33,6 +33,7 @@ function getFilmes() {
                             <p><strong>Resumo:</strong> ${filme[i]['resumo']['#text']}</p>
                             <p><strong>Gênero:</strong> ${generoFilme}</p>
                             <p><strong>Elenco:</strong> ${elencoFilme}</p>
+                            <p><strong>País de lançamento:</strong> ${filme[i]['dataLancamento']['@attributes']['pais']}</p>
                             <p><strong>Data de lançamento:</strong> ${filme[i]['dataLancamento']['#text']}</p>
                             <hr>
                         </div>
